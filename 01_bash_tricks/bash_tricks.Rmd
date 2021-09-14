@@ -35,6 +35,11 @@ ssh-copy-id user@zeus
  * `gzip`, `gunzip`, `pigz`
  * `cp`, `ln`, `ln -s`
  * `rsync`
+ * `tree`
+ * `which`
+ * `find`
+ * `cut`
+ 
  
 ## Viewing files
  * `cat` shows entire content
@@ -44,7 +49,6 @@ ssh-copy-id user@zeus
 
 ## Creating aliases
  * `alias tsv='column -t -s$'\''\t'\'`
- * 
  
 ## Wildcards
  * `*.{txt,csv}`
@@ -58,11 +62,16 @@ ssh-copy-id user@zeus
  * `cd -`: change to the previous directory
  * `realpath`: resolve all symbolic links
  * `rename`: bulk rename files 
+ * `killall NAME`: kill all processes that match the name (can only kill YOUR processes)
  
 ## Accessing history
 
  * Up and down arrows keys
  * **Ctrl + R**: search your history
+ 
+> To move to the beginning of the current line, use [Ctrl][A]. To move to the end of the current line, use [Ctrl[E]. To move the cursor forward one word on the current line, use [Alt][F]; to move the cursor backwards one word on the current line, use [Alt][B].
+
+> You can also use key commands to do more than move around on the current line. They can be used to manipulate text on the current line as well. For instance, use [Ctrl][U] to clear the characters on the line before the current cursor position and [Ctrl][K] to clear the characters on the line after the current cursor position. 
  
 ## Loops and the like
  * `for` loop
@@ -82,7 +91,7 @@ If you need to use loops, consider switching straight to nextflow instead (later
 ## Monitoring the system
 
  * `htop` or `glances`
-
+ * `spacereporter` (only on CePH)
 
 ## Other resources
 
