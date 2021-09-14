@@ -27,17 +27,65 @@ ssh-keygen
 ssh-copy-id user@zeus
 ```
 
+## Basics
+ * `cd `: return to home directory
+ * `pwd`: get current working directory
+ * `mkdir`, `rm`, `ls`, `rmdir`, `mv`
+ * `tar xvf`, `tar cvf`
+ * `gzip`, `gunzip`, `pigz`
+ * `cp`, `ln`, `ln -s`
+ * `rsync`
+ 
+## Viewing files
+ * `cat` shows entire content
+ * `less` scroll through file
+ * `head` show first lines of file
+ * `tail` show last lines of file
+
+## Creating aliases
+ * `alias tsv='column -t -s$'\''\t'\'`
+ * 
+ 
+## Wildcards
+ * `*.{txt,csv}`
+ 
+## Piping
+
+> This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.
+
 ## Neat tricks
 
- * **Ctrl + R**: search your history
  * `cd -`: change to the previous directory
+ * `realpath`: resolve all symbolic links
+ * `rename`: bulk rename files 
+ 
+## Accessing history
+
+ * Up and down arrows keys
+ * **Ctrl + R**: search your history
+ 
+## Loops and the like
+ * `for` loop
+ * `xargs`
+ 
+If you need to use loops, consider switching straight to nextflow instead (later lecture!)
 
 ## tmux
 
 * Terminal multiplexer
 
-## Useful programs
+## "modern unix" programs
 
  * `tldr`: Drop-in replacement for `man`
+ * `rga`: alternative to `grep -R`, only searches code and text files. 
+ 
+## Monitoring the system
+
+ * `htop` or `glances`
+
+
+## Other resources
+
+ * https://www.bioinformatics.babraham.ac.uk/training/Linux%20bootcamp/Linux%20Bootcamp%20Lectures.pdf
 
 
