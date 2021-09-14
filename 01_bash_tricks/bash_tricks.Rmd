@@ -1,0 +1,43 @@
+---
+title: "Bash Tricks"
+author: "Dietmar Rieder, Gregor Sturm"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Setting up passwordless authentication for ssh
+
+* Generate a key pair:
+   - private key: stays on your computer
+   - public key: put it on the server
+   
+Using the public key the server can check that a request comes from
+your computer. 
+
+```bash
+# generate a key pair
+ssh-keygen
+
+# copy the key pair on the server
+ssh-copy-id user@zeus
+```
+
+## Neat tricks
+
+ * **Ctrl + R**: search your history
+ * `cd -`: change to the previous directory
+
+## tmux
+
+* Terminal multiplexer
+
+## Useful programs
+
+ * `tldr`: Drop-in replacement for `man`
+
+
