@@ -25,6 +25,7 @@ jobs:
         
       - name: apindex
         run: |
+          sudo chown -R $USER:$USER deploy
           cd deploy && /usr/bin/apindex .
           
       - name: Deploy 🚀
