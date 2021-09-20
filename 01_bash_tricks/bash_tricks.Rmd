@@ -2,7 +2,7 @@
 title: "Bash Tricks"
 author: "Dietmar Rieder, Gregor Sturm"
 output:
-  beamer_presentation: default
+#  beamer_presentation: default
   ioslides_presentation: default
 ---
 
