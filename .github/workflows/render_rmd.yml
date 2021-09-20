@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Setup apindex
+        run: |
+          curl https://raw.githubusercontent.com/jayanta525/apindex/master/install.sh | bash
+          
+      - name: render slides
+        run: ./render_all_docker.sh
+        
+      - name: apindex
+        run: |
+          cd deploy && apindex .
+          
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: deploy # The folder the action should deploy.
+          
+      
