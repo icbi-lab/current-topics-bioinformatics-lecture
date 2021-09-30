@@ -15,22 +15,22 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 
 ## Main topics:
 
-- Advanced Linux command line use
+1. Advanced Linux command line use ([[material](01_bash_tricks)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/bash_tricks.html#1)])
    - terminal multiplexing with tmux
    - bash tricks
-- Software version control and collaboration
+1. Software version control and collaboration
    - git
    - continuous integration (CI)
    - code review
-- VScode remote development
-- Jupyter notebooks and Rmarkdown
-- Pipeline development with Nextflow DSL2 and nf-core
-- advanced data handling in R: dplyr
-- Fundamentals of data visualization
+1. VScode remote development
+1. Jupyter notebooks and Rmarkdown
+1. Pipeline development with Nextflow DSL2 and nf-core
+1. advanced data handling in R: dplyr
+1. Fundamentals of data visualization
   - ggplot2
   - tidyHeatmap
   - seaborn
-- virtual environments
+1. virtual environments
    - singularity, podman
    - conda
 
