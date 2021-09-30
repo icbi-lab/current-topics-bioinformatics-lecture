@@ -35,9 +35,9 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 1. Pipeline development with Nextflow DSL2 and nf-core
 1. advanced data handling in R: dplyr
 1. Fundamentals of data visualization
-  - ggplot2
-  - tidyHeatmap
-  - seaborn
+   - ggplot2
+   - tidyHeatmap
+   - seaborn
 1. virtual environments
    - singularity, podman
    - conda
