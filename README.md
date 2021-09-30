@@ -1,5 +1,7 @@
 # Current methods and concepts in Bioinformatics
 
+*Lecture at the Medical University of Innsbruck, winter term 2021*
+
 In this course students will learn about current bioinformatic tools, state of the art software development and data analysis frameworks, and code writing concepts which are fundamental for conducting scalable and reproducible data analyses.
 Attendees should have basic skills and knowledge in Linux and command line usage.
 
