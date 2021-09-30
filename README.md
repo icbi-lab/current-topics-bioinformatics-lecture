@@ -10,7 +10,8 @@ Attendees should have basic skills and knowledge in Linux and command line usage
  
 ## Lecture material
 
-Is available from this repository and from the course website: https://icbi-lab.github.io/current-topics-bioinformatics-lecture/
+ * Is organized in this repository
+ * Slides are available from the [course website](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/)
 
 ## Main topics:
 
