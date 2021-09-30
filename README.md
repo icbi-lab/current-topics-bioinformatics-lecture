@@ -7,7 +7,7 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 
 ## News
 
- * **Due to the core-lecture, the first three lectures (2021-10-07, 2021-10-14, and 2021-10-21) have been postponed to 10:00)**. 
+ * **Due to the core-lecture, the first three lectures (2021-10-07, 2021-10-14, and 2021-10-21) have been postponed to 10:15)**. 
 
 ## Logistics
 
