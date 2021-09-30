@@ -5,8 +5,8 @@ name: CI
 on:
   push:
     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -30,6 +30,7 @@ jobs:
           
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
+        if: github.ref == 'refs/heads/master'
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: deploy # The folder the action should deploy.
