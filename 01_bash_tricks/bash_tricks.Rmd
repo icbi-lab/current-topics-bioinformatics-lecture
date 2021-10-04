@@ -1,5 +1,5 @@
 ---
-title: "Bash Tricks"
+title: "Bash & Tricks"
 author: "Dietmar Rieder, Gregor Sturm"
 output:
 #  beamer_presentation: default
@@ -9,6 +9,167 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+## Bash - Bourne again shell
+
+* Is a Unix shell:
+  - GNU implementation of the Bourne shell (sh) from 1979
+  - can be seen as interface between the user and the operating system (OS)
+  - users interact with the shell using a terminal emulator (e.g. direct or via ssh)
+  - interactive command language and a scripting language
+
+* Other sh like shells: ![](images/shell.png){width=250px, align='right'}
+  - **zsh**, ksh, ash
+
+
+## Bash basic features
+
+* filename wildcarding \
+    <center>
+    `*.{png,jpg}`
+* piping
+    - `cmd1 | cmd2 | ... | cmdN`
+* here documents \
+    `cat << EOF` \
+    `line1` \
+    `line2` \
+    `EOF`
+* command substitution \
+    <center>
+    `gzip `\``grep ".fastq" filelist.txt`\` \
+    or \
+    `gzip $(grep ".fastq" filelist.txt)`
+
+## Bash basic features
+* variables \
+    <center>
+    `VAR="foo"; echo $VAR`
+* control structures for condition-testing \
+  <center>
+  ```if [ $FOO == $BAR ]; then ... fi```
+  
+* iteration (loops)
+    <center>
+    ` for ((i=1; i<=10; i++)); do echo Hello $i; done` \
+    or \
+    `i=1; while [ $i -le 10 ]; do echo Hello $i; ((i++)); done`
+
+## Bash config files
+Config files contain commands that are executed when loaded
+
+| file                | loaded on |
+|---------------------|---------|
+| `/etc/profile`      | login   |
+| `/etc/bashrc`       | login   |
+| `~/.profile`        | login   |
+| `~/.bash_profile`   | login   |
+| `~/.bash_login`     | login   |
+| `~/.bash_logout`    | login, executed on logout  |
+| `~/.bashrc`         | interactive + n/login |
+
+## Bash config files
+Important and useful settings
+
+* `$PATH` variable
+  - `~/.bash_profile`
+  - environment variable
+  - specifies a set of directories where executable programs are located
+  - program will be run from the first directory it is found in
+
+e.g. \
+<font size="4">
+`$ echo $PATH` \
+`$ /usr/local/bin:/usr/bin:/bin:/usr/sbin:/home/gringo/bin:/opt/pycharm/bin`
+</font>
+
+## Bash config files
+Important and useful settings
+
+* `$JAVA_HOME`
+  - directory in which JRE is installed
+* `$LD_LIBRARY_PATH`
+  - path to system and program libraries
+* `$HISTSIZE` variable
+  - specifies how many commands are saved in history \
+  `$ echo $HISTSIZE`\
+  `$ 1000`
+
+variables are set w/o leading `$`, e.g.\
+<font size="4">
+`$ JAVA_HOME=/usr/java/jdk/1.12/` \
+</font>
+
+
+## Aliases
+Unix shells allow aliasing commands, that is replacing a command by an arbitrary
+string.
+
+Used to abbreviate commands or add default options to a command, e.g.:
+
+  * `alias l='ls -la'`
+  * `alias tsv='column -t -s$'\''\t'\'`
+
+*Hint*: to persist your aliases set them in `~/.bash_profile`
+
+To remove an alias use:
+
+  * `unalias <alias>`
+
+
+## Help me or RTFM
+
+Most UNIX programs have a manual page to document the options
+for the command
+
+  * manual page can be accessed using \
+  `$ man <program name>` \
+  e.g. \
+  `$ man cat`
+  * will display detailed usage, options and examples for cat
+  * man pages usually have the following sections:
+<font size="4">
+    - NAME
+    - SYNOPSIS
+    - DESCRIPTION
+    - EXAMPLES
+    - AUTHOR, REPORTING BUGS, COPYRIGHT, SEE ALSO
+  
+</font>
+
+
+## Command line completion
+
+Interacting with the OS using the command line implies a lot of typing:
+
+  * long paths to input files
+  * program arguments
+  
+Typing is cumbersome and prone to errors
+
+  * Bash offers auto completion of:
+    - paths
+    - programs names
+    - program options
+
+  * Command line completion is achieved by typing a partial path/program and
+  then pressing the TAB key (to the left of Q)
+
+
+## Accessing history / edit commands
+
+ * Up and down arrows keys
+ * **Ctrl + R**: search your history
+ 
+>To move to the beginning of the current line, use **[Ctrl][A]** \
+>To move to the end of the current line, use **[Ctrl[E]** \
+>To move forward one word on the current line, use **[Alt][F]** \
+>To move backwards one word on the current line, use **[Alt][B]** \
+
+> You can also use key commands to do more than **move** around on the current line. They can be used to **manipulate** text on the current line as well.
+
+To clear the characters on the line before the current cursor position, use **[Ctrl][U]** \
+To clear the characters on the line after the current cursor position, use **[Ctrl][K]**
+
 
 ## Setting up passwordless authentication for ssh
 
@@ -64,14 +225,6 @@ ssh-copy-id user@zeus
  * `rename`: bulk rename files 
  * `killall NAME`: kill all processes that match the name (can only kill YOUR processes)
  
-## Accessing history
-
- * Up and down arrows keys
- * **Ctrl + R**: search your history
- 
-> To move to the beginning of the current line, use [Ctrl][A]. To move to the end of the current line, use [Ctrl[E]. To move the cursor forward one word on the current line, use [Alt][F]; to move the cursor backwards one word on the current line, use [Alt][B].
-
-> You can also use key commands to do more than move around on the current line. They can be used to manipulate text on the current line as well. For instance, use [Ctrl][U] to clear the characters on the line before the current cursor position and [Ctrl][K] to clear the characters on the line after the current cursor position. 
  
 ## Loops and the like
  * `for` loop
