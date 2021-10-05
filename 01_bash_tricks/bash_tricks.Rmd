@@ -116,6 +116,25 @@ To remove an alias use:
   * `unalias <alias>`
 
 
+## Aliases
+To alias a command that should get an argument passed we can use bash functions()
+
+e.g.\
+
+```bash
+mkcd() {                                                                                                                                                                                                
+    local d="$1"                                                                                                                                                                                                  
+    mkdir -p $d
+    cd $d
+}
+```
+
+Would use the first argument to create directory and directly change into it
+
+`$ mkcd /tmp/a/b/c` \
+`$ pwd` \
+`$ /tmp/a/b/c` \
+
 ## Help me or RTFM
 
 Most UNIX programs have a manual page to document the options
@@ -152,7 +171,7 @@ Typing is cumbersome and prone to errors
     - program options
 
   * Command line completion is achieved by typing a partial path/program and
-  then pressing the TAB key (to the left of Q)
+  then pressing the **TAB** key (to the left of Q)
 
 
 ## Accessing history / edit commands
@@ -160,94 +179,128 @@ Typing is cumbersome and prone to errors
  * Up and down arrows keys
  * **Ctrl + R**: search your history
  
->To move to the beginning of the current line, use **[Ctrl][A]** \
->To move to the end of the current line, use **[Ctrl[E]** \
->To move forward one word on the current line, use **[Alt][F]** \
->To move backwards one word on the current line, use **[Alt][B]** \
+To move to the beginning of the current line, use **[Ctrl][A]** \
+To move to the end of the current line, use **[Ctrl][E]** \
+To move forward one word on the current line, use **[Alt][F]** \
+To move backwards one word on the current line, use **[Alt][B]** \
 
-> You can also use key commands to do more than **move** around on the current line. They can be used to **manipulate** text on the current line as well.
+You can also use key commands to do more than **move** around on the current line. They can be used to **manipulate** text on the current line as well.
 
 To clear the characters on the line before the current cursor position, use **[Ctrl][U]** \
 To clear the characters on the line after the current cursor position, use **[Ctrl][K]**
 
 
-## Setting up passwordless authentication for ssh
+## The Unix filesystem
 
-* Generate a key pair:
-   - private key: stays on your computer
-   - public key: put it on the server
-   
-Using the public key the server can check that a request comes from
-your computer. 
+The Unix file system is a hierarchical tree of directories.
 
-```bash
-# generate a key pair
-ssh-keygen
+  * The filesystem root is: **/**
+  * There are not drive letters as in Windows
+  * Storage devices may be mounted into any place of the filesystem tree
+  * No file extensions required but they are helpful (.fastq, tar.gz)
+  
+![](images/fs.png){width=500px, align='center'}
 
-# copy the key pair on the server
-ssh-copy-id user@zeus
-```
+## Addressing files in the filesystem
 
-## Basics
- * `cd `: return to home directory
- * `pwd`: get current working directory
- * `mkdir`, `rm`, `ls`, `rmdir`, `mv`
- * `tar xvf`, `tar cvf`
- * `gzip`, `gunzip`, `pigz`
- * `cp`, `ln`, `ln -s`
- * `rsync`
- * `tree`
- * `which`
- * `find`
- * `cut`
- 
- 
-## Viewing files
- * `cat` shows entire content
- * `less` scroll through file
- * `head` show first lines of file
- * `tail` show last lines of file
+Addressing files by their full or absolute path
 
-## Creating aliases
- * `alias tsv='column -t -s$'\''\t'\'`
- 
-## Wildcards
- * `*.{txt,csv}`
- 
-## Piping
+  `/home/gringo/Documents/document1.txt`
+  `/home/gringo/scripts/script.sh`
 
-> This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.
 
-## Neat tricks
 
- * `cd -`: change to the previous directory
- * `realpath`: resolve all symbolic links
- * `rename`: bulk rename files 
- * `killall NAME`: kill all processes that match the name (can only kill YOUR processes)
- 
- 
-## Loops and the like
- * `for` loop
- * `xargs`
- 
-If you need to use loops, consider switching straight to nextflow instead (later lecture!)
+Addressing files by relative paths
 
-## tmux
+  `$ cd /home/gringo/scripts` \
+  `$ ls -l ../Documents/document1.txt` \
+  <center><font size="4">equals to \
+  `/home/gringo/Documents/document1.txt`</font></center> \
+  `$ ls -l ../../` (?)
 
-* Terminal multiplexer
 
-## "modern unix" programs
+## Addressing files in the filesystem
 
- * `tldr`: Drop-in replacement for `man`
- * `rga`: alternative to `grep -R`, only searches code and text files. 
- 
-## Monitoring the system
+Some shortcuts
 
- * `htop` or `glances`
- * `spacereporter` (only on CePH)
+  * `~ `  : tilde - the current user's home directory \
+  <font size="4">`$ cd ~/scripts`</font>
+  * `. `  : single dot - the current directory \
+  <font size="4">`$ ./script.sh`</font>
+  * `..`  : double dot - one directory above the current directory \
+  <font size="4">`$ cd ../Documents`</font>
+  * `cd -`: change to the previous directory
+  * `pwd` : print full path of current directory
+  * `pushd` : change + remember dir in directory stack \
+  <font size="4">`$ pushd .`</font>
+  * `popd` : return to last remembered dir in stack
+  * `dirs` : show dir stack
 
-## Other resources
+  
+## Soft links / Hard links
 
- * https://www.bioinformatics.babraham.ac.uk/training/Linux%20bootcamp/Linux%20Bootcamp%20Lectures.pdf
+Sometimes it is required or useful to have a copy of a file
+in another location, e.g. shorter path or program requirement.\
+\
+However, copying files is often problematic
+
+  * duplicates data
+  * is often slow (big files)
+  * changes are not propagated
+
+To avoid this we can use "virtual copies" named links
+
+
+## Soft links / Hard links
+
+  * Soft links (symbolic link, symlink)
+  <font size="4">
+    - visible as a link, but can still be used as if it is a file
+    - is a filename pointing to another filename
+    - work for files and directories
+    - work across filesystem devices
+    - when "original" is moved, renamed, deleted, the link is **dead**
+    
+  </font>
+  
+  <font size="4">   
+  `$ ln -s <path to real file> <path to link>`\
+  `$ ln -s /data/projects/2021/myPrj ~/myPrj` \
+  `$ ls -l myPrj` \
+  `$ lrwxrwxrwx 1 gringo users 20 Oct 7  2021 myPrj -> /data/projects/2021/myPrj` \
+  `$ cd myPrj; pwd` \
+  `$ /home/gringo/myPrj` \
+  `$ pwd -P` \
+  `$ /data/projects/2021/myPrj`
+  
+  </font>
+
+
+## Soft links / Hard links
+
+
+  * hard links
+  <font size="4">
+    - indistinguishable from a copied file
+    - is a filename pointing to the same data as the original 
+    - work only for files not directories
+    - work only on same filesystem device
+    - "original" can be moved, renamed, deleted
+  
+  </font>
+
+  <font size="4">
+  `$ ls -l myFile.txt` \
+  `$ -rw-r--r-- 1 gringo users 11 Oct  7 13:40 myFile.txt` \
+  `$ ln <path to real file> <path to link>`\
+  `$ ln myFile.txt myLink.txt` \
+  `$ ls -l my*.txt` \
+  `$ -rw-r--r-- 2 gringo users 11 Oct  7 13:40 myFile.txt` \
+  `$ -rw-r--r-- 2 gringo users 11 Oct  7 13:40 myLink.txt` \
+
+  </font>
+
+
+*Note*: Every file is basically a hard link to the data
 
 
