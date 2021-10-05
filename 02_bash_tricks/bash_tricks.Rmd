@@ -1,0 +1,104 @@
+---
+title: "Bash & Tricks"
+author: "Dietmar Rieder, Gregor Sturm"
+output:
+#  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Bash - Bourne again shell
+
+* Is a Unix shell:
+  - GNU implementation of the Bourne shell (sh) from 1979
+  - can be seen as interface between the user and the operating system (OS)
+  - users interact with the shell using a terminal emulator (e.g. direct or via ssh)
+  - interactive command language and a scripting language
+
+* Other sh like shells: ![](images/shell.png){width=250px, align='right'}
+  - **zsh**, ksh, ash
+
+
+## Setting up passwordless authentication for ssh
+
+* Generate a key pair:
+   - private key: stays on your computer
+   - public key: put it on the server
+   
+Using the public key the server can check that a request comes from
+your computer. 
+
+```bash
+# generate a key pair
+ssh-keygen
+
+# copy the key pair on the server
+ssh-copy-id user@zeus
+```
+
+## Basics
+ * `cd `: return to home directory
+ * `pwd`: get current working directory
+ * `mkdir`, `rm`, `ls`, `rmdir`, `mv`
+ * `tar xvf`, `tar cvf`
+ * `gzip`, `gunzip`, `pigz`
+ * `cp`, `ln`, `ln -s`
+ * `rsync`
+ * `tree`
+ * `which`
+ * `find`
+ * `cut`
+ 
+ 
+## Viewing files
+ * `cat` shows entire content
+ * `less` scroll through file
+ * `head` show first lines of file
+ * `tail` show last lines of file
+
+## Creating aliases
+ * `alias tsv='column -t -s$'\''\t'\'`
+ 
+## Wildcards
+ * `*.{txt,csv}`
+ 
+## Piping
+
+This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.
+
+## Neat tricks
+
+ * `cd -`: change to the previous directory
+ * `realpath`: resolve all symbolic links
+ * `rename`: bulk rename files 
+ * `killall NAME`: kill all processes that match the name (can only kill YOUR processes)
+ 
+ 
+## Loops and the like
+ * `for` loop
+ * `xargs`
+ 
+If you need to use loops, consider switching straight to nextflow instead (later lecture!)
+
+## tmux
+
+* Terminal multiplexer
+
+## "modern unix" programs
+
+ * `tldr`: Drop-in replacement for `man`
+ * `rga`: alternative to `grep -R`, only searches code and text files. 
+ 
+## Monitoring the system
+
+ * `htop` or `glances`
+ * `spacereporter` (only on CePH)
+
+## Other resources
+
+ * https://www.bioinformatics.babraham.ac.uk/training/Linux%20bootcamp/Linux%20Bootcamp%20Lectures.pdf
+
+
