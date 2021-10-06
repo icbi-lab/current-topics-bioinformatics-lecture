@@ -36,7 +36,10 @@ knitr::opts_chunk$set(echo = FALSE)
     `EOF`
 * command substitution \
     <center>
-    `gzip `\``grep ".fastq" filelist.txt`\` \
+    ```
+    gzip `grep ".fastq" filelist.txt`
+    ```
+    \
     or \
     `gzip $(grep ".fastq" filelist.txt)`
 
@@ -195,7 +198,7 @@ To clear the characters on the line after the current cursor position, use **[Ct
 The Unix file system is a hierarchical tree of directories.
 
   * The filesystem root is: **/**
-  * There are not drive letters as in Windows
+  * There are no drive letters as in Windows
   * Storage devices may be mounted into any place of the filesystem tree
   * No file extensions required but they are helpful (.fastq, tar.gz)
   
@@ -248,7 +251,7 @@ However, copying files is often problematic
   * is often slow (big files)
   * changes are not propagated
 
-To avoid this we can use "virtual copies" named links
+To avoid this we can use "virtual copies" named *links*
 
 
 ## Soft links / Hard links
