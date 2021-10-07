@@ -96,6 +96,8 @@ Important and useful settings
   - specifies how many commands are saved in history \
   `$ echo $HISTSIZE`\
   `$ 1000`
+* `$EDITOR`
+  - sets the default text editor (e.g. nano, mcedit)
 
 variables are set w/o leading `$`, e.g.\
 <font size="4">
