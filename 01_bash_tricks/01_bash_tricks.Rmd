@@ -275,7 +275,7 @@ To avoid this we can use "virtual copies" named *links*
   `$ lrwxrwxrwx 1 gringo users 20 Oct 7  2021 myPrj -> /data/projects/2021/myPrj` \
   `$ cd myPrj; pwd` \
   `$ /home/gringo/myPrj` \
-  `$ pwd -P` \
+  `$ pwd -P` or `$ realpath .`\
   `$ /data/projects/2021/myPrj`
   
   </font>
