@@ -21,24 +21,29 @@ Attendees should have basic skills and knowledge in Linux and command line usage
  * Slides are available from the [course website](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/)
  * If you find a mistake, feel free to send a [pull request](https://github.com/icbi-lab/current-topics-bioinformatics-lecture/pulls) or open an [issue](https://github.com/icbi-lab/current-topics-bioinformatics-lecture/issues). 
 
-## Topic overview
+## Lecture overview
 
 1. Advanced Linux command line use - Part I ([[material](01_bash_tricks)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/01_bash_tricks.html#1)])
-   - terminal multiplexing with tmux
    - bash tricks
+1. Advanced Linux command line use - Part II
+   - more bash tricks
+   - terminal multiplexing with tmux
+1. Software version control and collaboration - Part I
+   - git basics
+
+**More topics that will be covered in the following lectures**
 1. Software version control and collaboration
-   - git
    - continuous integration (CI)
    - code review
-1. VScode remote development
-1. Jupyter notebooks and Rmarkdown
-1. Pipeline development with Nextflow DSL2 and nf-core
-1. advanced data handling in R: dplyr
-1. Fundamentals of data visualization
+4. VScode remote development
+5. Jupyter notebooks and Rmarkdown
+6. Pipeline development with Nextflow DSL2 and nf-core
+7. advanced data handling in R: dplyr
+8. Fundamentals of data visualization
    - ggplot2
    - tidyHeatmap
    - seaborn
-1. virtual environments
+9. virtual environments
    - singularity, podman
    - conda
 
