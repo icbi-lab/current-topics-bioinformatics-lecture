@@ -174,23 +174,146 @@ slide:not(.current) .plotly.html-widget{
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Bash - Bourne again shell</h2></hgroup><article  id="bash---bourne-again-shell">
+<slide class=""><hgroup><h2>Housekeeping</h2></hgroup><article  id="housekeeping">
+
+<p>From next week on, we will start with student presentations. You can either present * a Bioinformatics method * a cool R or Python package * your own code (we will review it together)</p>
+
+<p>We will send around a google sheet where you can enter your topic. Please enter your topic into this <a href='https://docs.google.com/spreadsheets/d/1rFZhTqnFeD4ficLMLB8i3959LnEbaGRzkIkfzWAuGNw/edit?usp=sharing' title=''>google sheet</a>.</p>
+
+</article></slide><slide class=""><hgroup><h2>Command line completion</h2></hgroup><article  id="command-line-completion">
+
+<p>Interacting with the OS using the command line implies a lot of typing:</p>
 
 <ul>
-<li>Is a Unix shell:
+<li>long paths to input files</li>
+<li>program arguments</li>
+</ul>
+
+<p>Typing is cumbersome and prone to errors</p>
 
 <ul>
-<li>GNU implementation of the Bourne shell (sh) from 1979</li>
-<li>can be seen as interface between the user and the operating system (OS)</li>
-<li>users interact with the shell using a terminal emulator (e.g. direct or via ssh)</li>
-<li>interactive command language and a scripting language</li>
+<li>Bash offers auto completion of:
+
+<ul>
+<li>paths</li>
+<li>programs names</li>
+<li>program options</li>
 </ul></li>
-<li>Other sh like shells: <img width="250px," align="right" src='images/shell.png' title=''/>
+<li>Command line completion is achieved by typing a partial path/program and then pressing the <strong>TAB</strong> key (to the left of Q)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Accessing history / edit commands</h2></hgroup><article  id="accessing-history-edit-commands">
 
 <ul>
-<li><strong>zsh</strong>, ksh, ash</li>
+<li>Up and down arrows keys</li>
+<li><strong>Ctrl + R</strong>: search your history</li>
+</ul>
+
+<p>To move to the beginning of the current line, use <strong>[Ctrl][A]</strong><br/>To move to the end of the current line, use <strong>[Ctrl][E]</strong><br/>To move forward one word on the current line, use <strong>[Alt][F]</strong><br/>To move backwards one word on the current line, use <strong>[Alt][B]</strong><br/></p>
+
+<p>You can also use key commands to do more than <strong>move</strong> around on the current line. They can be used to <strong>manipulate</strong> text on the current line as well.</p>
+
+<p>To clear the characters on the line before the current cursor position, use <strong>[Ctrl][U]</strong><br/>To clear the characters on the line after the current cursor position, use <strong>[Ctrl][K]</strong></p>
+
+</article></slide><slide class=""><hgroup><h2>The Unix filesystem</h2></hgroup><article  id="the-unix-filesystem">
+
+<p>The Unix file system is a hierarchical tree of directories.</p>
+
+<ul>
+<li>The filesystem root is: <strong>/</strong></li>
+<li>There are no drive letters as in Windows</li>
+<li>Storage devices may be mounted into any place of the filesystem tree</li>
+<li>No file extensions required but they are helpful (.fastq, tar.gz)</li>
+</ul>
+
+<img align="center" width="500px," src='images/fs.png' title=''/>
+
+</article></slide><slide class=""><hgroup><h2>Addressing files in the filesystem</h2></hgroup><article  id="addressing-files-in-the-filesystem">
+
+<p>Addressing files by their full or absolute path</p>
+
+<p><code>/home/gringo/Documents/document1.txt</code> <code>/home/gringo/scripts/script.sh</code></p>
+
+<p>Addressing files by relative paths</p>
+
+<code>$ cd /home/gringo/scripts</code><br/><code>$ ls -l ../Documents/document1.txt</code><br/>
+
+<center>
+
+<font size="4">equals to<br/><code>/home/gringo/Documents/document1.txt</code></font>
+
+</center>
+
+<p><br/><code>$ ls -l ../../</code> (?)</p>
+
+</article></slide><slide class=""><hgroup><h2>Addressing files in the filesystem</h2></hgroup><article  id="addressing-files-in-the-filesystem-1">
+
+<p>Some shortcuts</p>
+
+<ul>
+<li><code>~</code> : tilde - the current user’s home directory<br/><font size="4"><code>$ cd ~/scripts</code></font></li>
+<li><code>.</code> : single dot - the current directory<br/><font size="4"><code>$ ./script.sh</code></font></li>
+<li><code>..</code> : double dot - one directory above the current directory<br/><font size="4"><code>$ cd ../Documents</code></font></li>
+<li><code>cd -</code>: change to the previous directory</li>
+<li><code>pwd</code> : print full path of current directory</li>
+<li><code>pushd</code> : change + remember dir in directory stack<br/><font size="4"><code>$ pushd .</code></font></li>
+<li><code>popd</code> : return to last remembered dir in stack</li>
+<li><code>dirs</code> : show dir stack</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Soft links / Hard links</h2></hgroup><article  id="soft-links-hard-links">
+
+<p>Sometimes it is required or useful to have a copy of a file in another location, e.g. shorter path or program requirement.<br/><br/>However, copying files is often problematic</p>
+
+<ul>
+<li>duplicates data</li>
+<li>is often slow (big files)</li>
+<li>changes are not propagated</li>
+</ul>
+
+<p>To avoid this we can use &ldquo;virtual copies&rdquo; named <em>links</em></p>
+
+</article></slide><slide class=""><hgroup><h2>Soft links / Hard links</h2></hgroup><article  id="soft-links-hard-links-1">
+
+<ul>
+<li>Soft links (symbolic link, symlink) <font size="4">
+
+<ul>
+<li>visible as a link, but can still be used as if it is a file</li>
+<li>is a filename pointing to another filename</li>
+<li>work for files and directories</li>
+<li>work across filesystem devices</li>
+<li>when &ldquo;original&rdquo; is moved, renamed, deleted, the link is <strong>dead</strong></li>
 </ul></li>
 </ul>
+
+<p></font></p>
+
+<p><font size="4"><br/><code>$ ln -s &lt;path to real file&gt; &lt;path to link&gt;</code><br/><code>$ ln -s /data/projects/2021/myPrj ~/myPrj</code><br/><code>$ ls -l myPrj</code><br/><code>$ lrwxrwxrwx 1 gringo users 20 Oct 7  2021 myPrj -&gt; /data/projects/2021/myPrj</code><br/><code>$ cd myPrj; pwd</code><br/><code>$ /home/gringo/myPrj</code><br/><code>$ pwd -P</code> or <code>$ realpath .</code><br/><code>$ /data/projects/2021/myPrj</code></p>
+
+<p></font></p>
+
+</article></slide><slide class=""><hgroup><h2>Soft links / Hard links</h2></hgroup><article  id="soft-links-hard-links-2">
+
+<ul>
+<li>hard links <font size="4">
+
+<ul>
+<li>indistinguishable from a copied file</li>
+<li>is a filename pointing to the same data as the original</li>
+<li>work only for files not directories</li>
+<li>work only on same filesystem device</li>
+<li>&ldquo;original&rdquo; can be moved, renamed, deleted</li>
+</ul></li>
+</ul>
+
+<p></font></p>
+
+<p><font size="4"> <code>$ ls -l myFile.txt</code><br/><code>$ -rw-r--r-- 1 gringo users 11 Oct  7 13:40 myFile.txt</code><br/><code>$ ln &lt;path to real file&gt; &lt;path to link&gt;</code><br/><code>$ ln myFile.txt myLink.txt</code><br/><code>$ ls -l my*.txt</code><br/><code>$ -rw-r--r-- 2 gringo users 11 Oct  7 13:40 myFile.txt</code><br/><code>$ -rw-r--r-- 2 gringo users 11 Oct  7 13:40 myLink.txt</code><br/></p>
+
+<p></font></p>
+
+<p><em>Note</em>: Every file is basically a hard link to the data</p>
 
 </article></slide><slide class=""><hgroup><h2>Setting up passwordless authentication for ssh</h2></hgroup><article  id="setting-up-passwordless-authentication-for-ssh">
 
