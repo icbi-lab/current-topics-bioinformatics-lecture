@@ -14,12 +14,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 From next week on, we will start with student presentations. 
 You can either present
+
  * a Bioinformatics method
  * a cool R or Python package
  * your own code (we will review it together)
 
 We will send around a google sheet where you can enter your topic. 
-Please enter your topic into this [google sheet](https://docs.google.com/spreadsheets/d/1rFZhTqnFeD4ficLMLB8i3959LnEbaGRzkIkfzWAuGNw/edit?usp=sharing). 
+If you don't choose a topic, we will assign one. 
 
 ## Command line completion
 
