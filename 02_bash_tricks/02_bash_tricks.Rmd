@@ -328,6 +328,12 @@ $ grep  ">" seq.fasta | tr -d ">" > out.txt
 ``
 </font>
 
+<font size="4">
+``
+$ cat seq.fasta | rev | tr "ACGT" "TGCA" > rev_comp.fasta
+``
+</font>
+
 
 ## Named pipes
 
