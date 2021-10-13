@@ -267,6 +267,34 @@ slide:not(.current) .plotly.html-widget{
 <li><code>dirs</code> : show dir stack</li>
 </ul>
 
+</article></slide><slide class=""><hgroup><h2>Wildcards</h2></hgroup><article  id="wildcards">
+
+<ul>
+<li><p>Wildcard are provided by the shell</p></li>
+<li><p>allow a quick addressing of multiple files in a single operation</p></li>
+<li><p>Different types of wildcards</p></li>
+<li><p><code>*</code> … any number of characters</p></li>
+<li><p><code>?</code> … single any character</p></li>
+<li><p><code>{&lt;a&gt;,&lt;b&gt;,&lt;..&gt;}</code> … choice of a,b,…</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Wildcards examples</h2></hgroup><article  id="wildcards-examples">
+
+<pre class = 'prettyprint lang-bash'>  $ ls -1 data/s*.fastq.gz
+  data/sample_a.fastq.gz
+  data/sample_ab.fastq.gz
+  data/sample_b.fastq.gz
+  data/sub_sample_x.fastq.gz</pre>
+
+<pre class = 'prettyprint lang-bash'>  $ ls data/sample_??.fastq.gz
+  data/sample_ab.fastq.gz</pre>
+
+<pre class = 'prettyprint lang-bash'>  $ ls data/s*_{a,x}.fastq.gz
+  data/sample_a.fastq.gz data/sub_sample_x.fastq.gz</pre>
+
+<pre class = 'prettyprint lang-bash'>  $ ls data/reads_R{1,2}.fastq.gz
+  data/reads_R1.fastq.gz data/reads_R2.fastq.gz</pre>
+
 </article></slide><slide class=""><hgroup><h2>Soft links / Hard links</h2></hgroup><article  id="soft-links-hard-links">
 
 <p>Sometimes it is required or useful to have a copy of a file in another location, e.g. shorter path or program requirement.<br/><br/>However, copying files is often problematic</p>
@@ -321,109 +349,178 @@ slide:not(.current) .plotly.html-widget{
 
 <p><em>Note</em>: Every file is basically a hard link to the data</p>
 
-</article></slide><slide class=""><hgroup><h2>Setting up passwordless authentication for ssh</h2></hgroup><article  id="setting-up-passwordless-authentication-for-ssh">
+</article></slide><slide class=""><hgroup><h2>Some basic file commands</h2></hgroup><article  id="some-basic-file-commands">
 
 <ul>
-<li>Generate a key pair:
-
-<ul>
-<li>private key: stays on your computer</li>
-<li>public key: put it on the server</li>
-</ul></li>
-</ul>
-
-<p>Using the public key the server can check that a request comes from your computer.</p>
-
-<pre class = 'prettyprint lang-bash'># generate a key pair
-ssh-keygen
-
-# copy the key pair on the server
-ssh-copy-id user@zeus</pre>
-
-</article></slide><slide class=""><hgroup><h2>Basics</h2></hgroup><article  id="basics">
-
-<ul>
-<li><code>cd</code>: return to home directory</li>
-<li><code>pwd</code>: get current working directory</li>
-<li><code>mkdir</code>, <code>rm</code>, <code>ls</code>, <code>rmdir</code>, <code>mv</code></li>
-<li><code>tar xvf</code>, <code>tar cvf</code></li>
-<li><code>gzip</code>, <code>gunzip</code>, <code>pigz</code></li>
+<li><code>cd</code>, <code>pwd</code>, <code>mkdir</code>, <code>rmdir</code></li>
+<li><code>touch</code>, <code>rm</code>, <code>ls</code>, <code>mv</code></li>
+<li><code>tar xvf</code>, <code>tar cvf</code>, <code>tar xzvf</code>, <code>tar czvf</code></li>
+<li><code>gzip</code>, <code>gunzip</code>, <code>pigz</code>, <code>bgzip</code></li>
 <li><code>cp</code>, <code>ln</code>, <code>ln -s</code></li>
 <li><code>rsync</code></li>
 <li><code>tree</code></li>
-<li><code>which</code></li>
-<li><code>find</code></li>
-<li><code>cut</code></li>
+<li><code>which</code>, <code>find</code>, <code>locate</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Viewing files</h2></hgroup><article  id="viewing-files">
 
 <ul>
-<li><code>cat</code> shows entire content</li>
+<li><code>cat</code>, <code>zcat</code> shows entire content file (compressed)</li>
+<li><code>tac</code> shows entire content in reverse order</li>
 <li><code>less</code> scroll through file</li>
-<li><code>head</code> show first lines of file</li>
-<li><code>tail</code> show last lines of file</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Creating aliases</h2></hgroup><article  id="creating-aliases">
+<li><code>head</code> shows first (10, or -&lt;x&gt;) lines of file
 
 <ul>
-<li><code>alias tsv=&#39;column -t -s$&#39;\&#39;&#39;\t&#39;\&#39;</code></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Wildcards</h2></hgroup><article  id="wildcards">
-
-<ul>
-<li><code>*.{txt,csv}</code></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Piping</h2></hgroup><article  id="piping">
-
-<p>This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.</p>
-
-</article></slide><slide class=""><hgroup><h2>Neat tricks</h2></hgroup><article  id="neat-tricks">
+<li><font size="4"><code>head file.txt</code> or <code>head -2 file.txt</code></font></li>
+</ul></li>
+<li><code>tail</code> shows last (10, or -&lt;x&gt;) lines of file
 
 <ul>
-<li><code>cd -</code>: change to the previous directory</li>
-<li><code>realpath</code>: resolve all symbolic links</li>
-<li><code>rename</code>: bulk rename files</li>
-<li><code>killall NAME</code>: kill all processes that match the name (can only kill YOUR processes)</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Loops and the like</h2></hgroup><article  id="loops-and-the-like">
+<li><font size="4"><code>tail file.txt</code> or <code>tail -2 file.txt</code></font></li>
+</ul></li>
+<li><code>sort</code> shows sorted file, type, key(s) and direction
 
 <ul>
-<li><code>for</code> loop</li>
-<li><code>xargs</code></li>
+<li><font size="4"><code>sort file.txt</code> or <code>sort -k1,1 -k3,3n file.txt</code></font></li>
+</ul></li>
+<li><code>diff</code> shows differences between files</li>
+<li><code>wc</code> line, word, character counter</li>
 </ul>
 
-<p>If you need to use loops, consider switching straight to nextflow instead (later lecture!)</p>
-
-</article></slide><slide class=""><hgroup><h2>tmux</h2></hgroup><article  id="tmux">
+</article></slide><slide class=""><hgroup><h2>Filtering files</h2></hgroup><article  id="filtering-files">
 
 <ul>
-<li>Terminal multiplexer</li>
+<li><code>cut</code> shows specified columns
+
+<ul>
+<li><font size="4"><code>cut -f2,5 file.txt</code> or <code>cut -d&quot;,&quot; -f3-6 file.txt</code></font></li>
+</ul></li>
+<li><code>grep</code> filters file by expression
+
+<ul>
+<li><font size="4"><code>grep Foo file.txt</code></font></li>
+<li><font size="4"><code>grep &#39;^&gt;&#39; sequences.fasta</code> or <code>grep -v &#39;^&gt;&#39; sequences.fasta</code></font></li>
+<li><font size="4"><code>grep &#39;^$&#39; file.txt</code></font></li>
+</ul></li>
+<li><code>uniq</code> shows unique/duplicate lines only (needs sorting)
+
+<ul>
+<li><font size="4"><code>uniq file.txt</code></font></li>
+<li><font size="4"><code>uniq -d file.txt</code></font></li>
+<li><font size="4"><code>sort -u file.txt</code></font></li>
+</ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>&ldquo;modern unix&rdquo; programs</h2></hgroup><article  id="modern-unix-programs">
+</article></slide><slide class=""><hgroup><h2>Editing files or streams</h2></hgroup><article  id="editing-files-or-streams">
 
 <ul>
-<li><code>tldr</code>: Drop-in replacement for <code>man</code></li>
-<li><code>rga</code>: alternative to <code>grep -R</code>, only searches code and text files.</li>
+<li><code>sed</code> stream editor
+
+<ul>
+<li><code>sed -i -r &#39;s/&gt;\ /&gt;/&#39; seq.fasta</code></li>
+</ul></li>
+<li><code>tr</code> translate characters
+
+<ul>
+<li><code>tr &quot;ATGC&quot; &quot;TACG&quot;</code></li>
+</ul></li>
+<li><code>rev</code> reverse strings</li>
+<li><code>paste</code> merge lines of files</li>
+<li><code>awk</code> powerful pattern scanning and processing language</li>
+<li><code>shuf</code> write lines of file in random order</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Monitoring the system</h2></hgroup><article  id="monitoring-the-system">
+</article></slide><slide class=""><hgroup><h2>The fun starts here</h2></hgroup><article  id="the-fun-starts-here">
+
+<p>What can we do with all these (and tons of other) tools?</p>
 
 <ul>
-<li><code>htop</code> or <code>glances</code></li>
-<li><code>spacereporter</code> (only on CePH)</li>
+<li>Record their output</li>
+<li>Get the error status</li>
+<li>Knit them together to build &ldquo;pipelines&rdquo;</li>
+<li>Running them over batches of files</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Other resources</h2></hgroup><article  id="other-resources">
+</article></slide><slide class=""><hgroup><h2>Input/Ouput/Error streams</h2></hgroup><article  id="inputouputerror-streams">
+
+<p>POSIX<font size="4">*</font> has 3 standard data streams:</p>
 
 <ul>
-<li><a href='https://www.bioinformatics.babraham.ac.uk/training/Linux%20bootcamp/Linux%20Bootcamp%20Lectures.pdf' title=''>https://www.bioinformatics.babraham.ac.uk/training/Linux%20bootcamp/Linux%20Bootcamp%20Lectures.pdf</a></li>
-</ul></article></slide>
+<li>0 <code>STDIN</code>: Standard Input, can send data to a program</li>
+<li>1 <code>STDOUT</code>: Standard Output, output data from a program</li>
+<li>2 <code>STDERR</code>: Standard Error, errors/warnings from a program</li>
+</ul>
+
+<img width="450px," align="center" src='images/Stdstreams.png' title=''/>
+
+<p><font size="4">*Portable Operating System Interface: API in Unix</font></p>
+
+</article></slide><slide class=""><hgroup><h2>Redirecting Standard Streams</h2></hgroup><article  id="redirecting-standard-streams">
+
+<p>Streams can be redirected using arrows</p>
+
+<ul>
+<li><code>&gt; filename</code> Redirects STDOUT (<code>&gt;&gt;</code> appends)</li>
+<li><code>&lt; filename</code> Redirects STDIN</li>
+<li><code>2&gt; filename</code> Redirects STDERR</li>
+<li><code>2&gt;&amp;1</code> Sends STDERR to STDOUT results in one output stream</li>
+<li><code>&gt; /dev/null</code> Sends output to the data Nirvana</li>
+</ul>
+
+<pre class = 'prettyprint lang-bash'>$ ls -1 *.fastq.gz &gt; fastq_list.txt
+$ cat fastq_list.txt
+sample_1.fastq.gz
+sample_2.fastq.gz
+[...]
+
+$  program sample_1.fastq.gz &gt; result.txt 2&gt; error.txt
+$  program sample_1.fastq.gz &gt; result.txt 2&gt;&amp;1</pre>
+
+</article></slide><slide class=""><hgroup><h2>Pipes</h2></hgroup><article  id="pipes">
+
+<p>This is the Unix philosophy:<br/></p>
+
+<ul>
+<li>Write programs that do one thing and do it well</li>
+<li>Write programs to work together</li>
+<li>Write programs to handle text streams, because that is a universal interface.</li>
+</ul>
+
+<img width="300px," align="right" src='images/Pipeline.png' title=''/>
+
+<p><font size="4"> <code>$ cat file.txt | grep -v &quot;^$&quot; | sort k2,2n</code> </font></p>
+
+<p><font size="4"> <code>$ grep  &quot;&gt;&quot; seq.fasta | tr -d &quot;&gt;&quot; &gt; out.txt</code> </font></p>
+
+</article></slide><slide class=""><hgroup><h2>Named pipes</h2></hgroup><article  id="named-pipes">
+
+<p>Named pipes also known as <em>FIFO</em>:</p>
+
+<ul>
+<li><em>F</em>irst <em>I</em>n, <em>F</em>irst <em>O</em>ut principle</li>
+<li>extension for traditional pipe concept</li>
+<li>in contrast to unnamed pipes they use the filesystem</li>
+<li><code>mkfifo</code> creates the FIFO</li>
+<li>do not consume disk space</li>
+</ul>
+
+<p>Two separate processes can access the pipe by name one process can open it as a <strong>reader</strong>, and the other as a <strong>writer</strong>.</p>
+
+</article></slide><slide class=""><hgroup><h2>Named pipes example</h2></hgroup><article  id="named-pipes-example">
+
+<pre class = 'prettyprint lang-bash'>$ mkfifo R1
+$ mkfifo R2
+$ yara_mapper -e 3 -t 4 -f bam y_idx reads_R1.fq reads_R2.fq | \
+    samtools view -@ 4 -h -F 4 -b1 | \
+    tee R1 R2 &gt; /dev/null &amp;
+    samtools view -@ 2 -h -f 0x40 -b1 R1 &gt; mapped_1.bam &amp;
+    samtools view -@ 2 -h -f 0x80 -b1 R2 &gt; mapped_2.bam &amp;
+wait
+rm -f R1 R2</pre>
+
+<p><font size="4"> <code>tee</code> reads standard input and writes it to both standard output and one or more files, effectively duplicating its input </font></p>
+
+<img width="250px," align="center" src='images/Tee.png' title=''/></article></slide>
 
 
   <slide class="backdrop"></slide>
