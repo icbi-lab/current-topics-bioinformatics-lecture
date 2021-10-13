@@ -1,5 +1,5 @@
 ---
-title: "Bash & Tricks"
+title: "Bash & Tricks - Part II"
 author: "Dietmar Rieder, Gregor Sturm"
 output:
 #  beamer_presentation: default
@@ -226,7 +226,7 @@ To avoid this we can use "virtual copies" named *links*
  * `head` shows first (10, or -\<x\>) lines of file
     - <font size="4">`head file.txt` or `head -2 file.txt`</font>
  * `tail` shows last (10, or -\<x\>) lines of file
-    - <font size="4">`tail file.txt` or `tail -2 file.txt`</font>
+    - <font size="4">`tail file.txt` or `tail -2 file.txt` or `tail -n+2` </font>
  * `sort` shows sorted file, type, key(s) and direction
     - <font size="4">`sort file.txt` or `sort -k1,1 -k3,3n file.txt`</font>
  * `diff` shows differences between files
