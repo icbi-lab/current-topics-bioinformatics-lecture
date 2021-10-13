@@ -2,3 +2,4 @@
 *.tex
 *.log
 deploy
+*/.Rhistory
