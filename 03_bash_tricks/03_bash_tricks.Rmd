@@ -10,6 +10,120 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## The fun starts here
+
+What can we do with all these (and tons of other) tools?
+
+ * Record their output
+ * Get the error status
+ * Knit them together to build "pipelines"
+ * Running them over batches of files
+
+ 
+## Input/Ouput/Error streams
+
+POSIX<font size="4">*</font> has 3 standard data streams:
+
+ * 0 `STDIN`: Standard Input, can send data to a program
+ * 1 `STDOUT`: Standard Output, output data from a program
+ * 2 `STDERR`: Standard Error, errors/warnings from a program
+
+
+![](images/Stdstreams.png){width=450px, align='center'}
+
+
+<font size="4">*Portable Operating System Interface: API in Unix</font>
+
+
+## Redirecting Standard Streams
+
+Streams can be redirected using arrows
+
+ * `> filename` Redirects STDOUT (`>>` appends)
+ * `< filename` Redirects STDIN
+ * `2> filename` Redirects STDERR
+ * `2>&1` Sends STDERR to STDOUT results in one output stream
+ * `> /dev/null` Sends output to the data Nirvana
+
+```bash
+$ ls -1 *.fastq.gz > fastq_list.txt
+$ cat fastq_list.txt
+sample_1.fastq.gz
+sample_2.fastq.gz
+[...]
+
+$  program sample_1.fastq.gz > result.txt 2> error.txt
+$  program sample_1.fastq.gz > result.txt 2>&1
+```
+
+## Pipes
+
+This is the Unix philosophy:\
+
+ * Write programs that do one thing and do it well
+ * Write programs to work together
+ * Write programs to handle text streams, because that is a universal interface.
+
+
+![](images/Pipeline.png){width=300px, align='right'}
+
+
+ <font size="4">
+``
+$ cat file.txt | grep -v "^$" | sort k2,2n 
+``
+</font>
+
+
+<font size="4">
+``
+$ grep  ">" seq.fasta | tr -d ">" > out.txt
+``
+</font>
+
+<font size="4">
+``
+$ cat seq.fasta | rev | tr "ACGT" "TGCA" > rev_comp.fasta
+``
+</font>
+
+
+## Named pipes
+
+Named pipes also known as *FIFO*:
+
+ * *F*irst *I*n, *F*irst *O*ut principle
+ * extension for traditional pipe concept
+ * in contrast to unnamed pipes they use the filesystem
+ * `mkfifo` creates the FIFO
+ * do not consume disk space
+
+Two separate processes can access the pipe by name
+one process can open it as a **reader**, and the other as a **writer**.
+
+
+## Named pipes example
+ 
+
+```bash
+$ mkfifo R1
+$ mkfifo R2
+$ yara_mapper -e 3 -t 4 -f bam y_idx reads_R1.fq reads_R2.fq | \
+    samtools view -@ 4 -h -F 4 -b1 | \
+    tee R1 R2 > /dev/null &
+    samtools view -@ 2 -h -f 0x40 -b1 R1 > mapped_1.bam &
+    samtools view -@ 2 -h -f 0x80 -b1 R2 > mapped_2.bam &
+wait
+rm -f R1 R2
+```
+
+<font size="4">
+`tee` reads standard input and writes it to both standard output and one or more files, effectively duplicating its input
+</font>
+
+![](images/Tee.png){width=250px, align='center'}
+
+
 
 ## Neat tricks
 
