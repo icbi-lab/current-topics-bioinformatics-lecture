@@ -239,7 +239,7 @@ To avoid this we can use "virtual copies" named *links*
  * `grep` filters file by expression
     - <font size="4">`grep Foo file.txt`</font>
     - <font size="4">`grep '^>' sequences.fasta` or `grep -v '^>' sequences.fasta`</font>
-    - <font size="4">`grep '^$' file.txt`</font>
+    - <font size="4">`grep -v '^$' file.txt`</font>
  * `uniq` shows unique/duplicate lines only (needs sorting)
     - <font size="4">`uniq file.txt`</font>
     - <font size="4">`uniq -d file.txt`</font>
