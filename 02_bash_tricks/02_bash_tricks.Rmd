@@ -248,7 +248,7 @@ To avoid this we can use "virtual copies" named *links*
 
 ## Editing files or streams
  * `sed` stream editor
-   - `sed -i -r 's/>\ />/' seq.fasta`
+   - `sed -i -r 's/>\ />/g' seq.fasta`
  * `tr` translate characters 
    - `tr "ATGC" "TACG"`
  * `rev` reverse strings
