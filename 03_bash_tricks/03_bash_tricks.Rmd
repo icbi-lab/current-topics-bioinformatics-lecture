@@ -257,5 +257,6 @@ ssh-copy-id user@zeus
 ## Other resources
 
  * https://www.bioinformatics.babraham.ac.uk/training/Linux%20bootcamp/Linux%20Bootcamp%20Lectures.pdf
+ * [Learn Bash in Y minutes](https://learnxinyminutes.com/docs/bash/)
 
 
