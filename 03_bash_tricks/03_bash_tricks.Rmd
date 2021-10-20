@@ -123,35 +123,116 @@ rm -f R1 R2
 
 ![](images/Tee.png){width=250px, align='center'}
 
+## System / Process monitoring
 
 
-## Neat tricks
+ * `ps`
+   - Show all processes: \
+   `ps -e`
+   - Show all processes for `$USER` in full format as tree: \
+   `ps -efxu`
+   - Show all processes for all users in full format as tree: \
+   `ps -afxu`
+ * Continuous monitoring: \
+   - `top`, `atop`, `htop`, or `glances`
+ * Disk usage:
+   - `du`, `du -h -d <N>`, `du -sh`
+   - `spacereporter` (only on CePH)
 
- * `cd -`: change to the previous directory
- * `realpath`: resolve all symbolic links
- * `rename`: bulk rename files 
- * `killall NAME`: kill all processes that match the name (can only kill YOUR processes)
+## Process management
+
+  * Abort the current process: `<CTRL>+<c>`
+  * Stop the current process: `<CTRL>+<z>`
+  * Send job to the background \
+  <font size="4">`bg [jobspec]`</font>
+  * Bring job to the foreground and make it current \
+  <font size="4">`fg [jobspec]`</font>
+  * List jobs in current background \
+  <font size="4">`jobs`</font>
+  * Run job in background: \
+  <font size="4">
+    `samtools sort -o sorted.bam unsorted.bam > sort.log 2>&1 &` \
+    or if you want the job to continue even if you close the shell\
+    `nohup samtools sort -o sorted.bam unsorted.bam > sort.log 2>&1 &` \
+    use `disown <PID>` if you forgot `nohup`
+  </font>
+
+
+## Process management
+
+  * Send a signal to a process `kill [-signal] <PID>` 
+    - e.g. `-TERM`, `-KILL`, `-STOP`, `-CONT`
+  * Use the `k` key in `top` or `atop` to send a signal to a selected process
+  * Use `<F9>` to send signal to selected processes in `htop`
+  * Kill all processes by name
+    - `killall <processname>`
+    - `killall -i <processname>`
+    
+*Note*:\
+A user may only kill processes the s*he owns, only root can kill all processes
+    
  
+## Loops
+
+```bash
+for value in {5,10,20,50}
+  do
+    run_simulation --iterations=$value > ${value}_iterations.log 2>&1
+  done
+
+for value in {10..100}
+  do
+    run_simulation --iterations=$value > ${value}_iterations.log 2>&1
+  done
+
+for file in *txt
+  do
+    echo $file
+    grep .sam $file | wc -l
+  done
+```
+
  
-## Loops and the like
- * `for` loop
- * `xargs`
- 
-If you need to use loops, consider switching straight to nextflow instead (later lecture!)
+If you need to use loops, consider switching straight to **nextflow** instead (later lecture!)
 
 ## tmux
 
-* Terminal multiplexer
+`tmux` is a terminal multiplexer
 
-## "modern unix" programs
+ * You can start a `tmux` session
+   - open multiple windows inside a session
+   - split into rectangular panes.
+ * With `tmux` it is easy to switch between multiple programs in one terminal
+ * sessions may be detached and reattached to a different terminal
+ * `tmux` sessions are persistent
 
- * `tldr`: Drop-in replacement for `man`
- * `rga`: alternative to `grep -R`, only searches code and text files. 
- 
-## Monitoring the system
+All commands in Tmux start with a prefix, which by default is `<CTRL>+b`.
 
- * `htop` or `glances`
- * `spacereporter` (only on CePH)
+
+## tmux
+
+Basic `tmux` commands
+
+```bash
+$ tmux new -s <session_name>
+```
+
+<font size=4>
+`<CTRL>+b c` Create a new window (with shell) \
+`<CTRL>+b w` Choose window from a list \
+`<CTRL>+b ,` Rename the current window \
+`<CTRL>+b %` Split current pane horizontally into two panes \
+`<CTRL>+b "` Split current pane vertically into two panes \ 
+`<CTRL>+b o` Go to the next pane \
+`<CTRL>+b ;` Toggle between the current and previous pane \
+`<CTRL>+b x` Close the current pane \
+</font>
+
+List and attach `tmux` sessions
+```bash
+$ tmux ls
+$ tmux a -t <session_name>
+```
 
 
 ## Setting up passwordless authentication for ssh
