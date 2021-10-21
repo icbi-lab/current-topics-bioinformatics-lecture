@@ -1,0 +1,124 @@
+---
+title: "Git Basics"
+author: "Dietmar Rieder, Gregor Sturm"
+output:
+  ioslides_presentation: default
+---
+
+
+## What is Git? 
+
+* Source code management (SCM) tool 
+* Developed by Linus Torvalds for the Linux kernel 
+* Keep track of source code in *commits* and *branches*
+   * *Commit = “unit of code change”*
+   
+   
+   
+![](images/branch-model.png)
+   
+## Why should I use git? 
+
+* Backup your code
+* Synchronize between laptop and HPC
+* Know what you did 2 months ago
+
+<br />
+
+> - Git is an industry standard
+> - Collaborate with others
+> - Share your code
+
+## A git repository...
+
+...is just a folder with a special `.git` directory. 
+
+<br />
+
+Create a repository by typing
+
+```bash
+git init
+```
+
+within a directory. 
+
+## The four git states
+
+```{r, fig.cap="Figure from http://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository", echo=FALSE}
+knitr::include_graphics("images/git-states.png")
+```
+
+## The four git states
+
+Display modified files and their states:
+```bash
+git status
+```
+
+Add a modified file to the *staging area*:
+```bash
+git add <FILE>
+```
+
+Commit all *staged* files:
+```bash
+git commit
+```
+
+Browse history
+```bash
+git log
+```
+
+## Working with branches
+
+List branches
+```
+git branch -v
+```
+
+Create a new branch from current commit
+```
+git branch <NAME>
+```
+
+Switch to another branch
+```
+git switch <NAME>
+```
+
+## Ignoring files
+
+Create a file named `.gitignore` in the git repository.
+
+Example: 
+
+```
+.Rhistory
+.RData
+
+*.nb.html
+plots/*.pdf
+```
+
+## Configuring git
+
+Configuration file at `~/.gitconfig`. Modify with text-editor or with `git config` command. 
+
+When collaborating online, it is important to set your identity -- it will be associated with every commit: 
+
+```bash
+git config --global user.name "Your name"
+git config --global user.email "mail@example.com"
+```
+
+
+
+
+## Links
+
+ * [ICBI Gitlab (for internal projects)](gitlab.i-med.ac.at)
+ * [ICBI GitHub (for published projects)](github.com/icbi-lab)
+ * [Git Cheatsheet by GitLab](https://about.gitlab.com/images/press/git-cheat-sheet.pdf)
+ 
