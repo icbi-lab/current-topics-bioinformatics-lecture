@@ -54,6 +54,7 @@ knitr::include_graphics("images/git-states.png")
 Display modified files and their states:
 ```bash
 git status
+git diff
 ```
 
 Add a modified file to the *staging area*:
