@@ -30,7 +30,7 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 1. Advanced Linux command line use - Part III ([[material](03_bash_tricks)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/03_bash_tricks.html#1)])
    - combining commands with pipes
    - terminal multiplexing with tmux
-1. Software version control and collaboration - Part I
+1. Software version control and collaboration - Part I  ([[material](04_git_basics)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/04_git_basics.html#1)])
    - git basics
 
 **More topics that will be covered in the following lectures**
