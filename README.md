@@ -32,11 +32,18 @@ Attendees should have basic skills and knowledge in Linux and command line usage
    - terminal multiplexing with tmux
 1. Software version control and collaboration - Part I  ([[material](04_git_basics)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/04_git_basics.html#1)])
    - git basics
+1. Nextflow - Part I ([[material](05_nextflow_basics)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/05_nextflow_basics.html)])
+   - benefits of workflow managers
+   - nextflow features 
+   - basic nextflow scripting
+3. Software version control and collaboration - Part II ([[material](06_git_collaboration)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/06_git_collaboration.html)])
+   - working with git remotes (GitHub/GitLab)
+   - issues and pull requests
+   - code review
+   - continuous integration
 
 **More topics that will be covered in the following lectures**
-1. Software version control and collaboration
-   - continuous integration (CI)
-   - code review
+
 4. VScode remote development
 5. Jupyter notebooks and Rmarkdown
 6. Pipeline development with Nextflow DSL2 and nf-core
