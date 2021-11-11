@@ -36,7 +36,7 @@ Attendees should have basic skills and knowledge in Linux and command line usage
    - benefits of workflow managers
    - nextflow features 
    - basic nextflow scripting
-3. Software version control and collaboration - Part II ([[material](06_git_collaboration)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/06_git_collaboration.html)])
+1. Software version control and collaboration - Part II ([[material](06_git_collaboration)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/06_git_collaboration.html)])
    - working with git remotes (GitHub/GitLab)
    - issues and pull requests
    - code review
