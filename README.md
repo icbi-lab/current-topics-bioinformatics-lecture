@@ -41,7 +41,9 @@ Attendees should have basic skills and knowledge in Linux and command line usage
    - issues and pull requests
    - code review
    - continuous integration
-
+1. Nextflow - Part II ([[material](07_nextflow_dsl2)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/07_nextflow_dsl2.html)])
+   - Modular workflows with DSL2
+  
 **More topics that will be covered in the following lectures**
 
 4. VScode remote development
