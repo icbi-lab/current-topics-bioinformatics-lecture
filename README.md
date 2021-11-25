@@ -48,7 +48,6 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 
 4. VScode remote development
 5. Jupyter notebooks and Rmarkdown
-6. Pipeline development with Nextflow DSL2 and nf-core
 7. advanced data handling in R: dplyr
 8. Fundamentals of data visualization
    - ggplot2
