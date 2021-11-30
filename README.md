@@ -43,12 +43,12 @@ Attendees should have basic skills and knowledge in Linux and command line usage
    - continuous integration
 1. Nextflow - Part II ([[material](07_nextflow_dsl2)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/07_nextflow_dsl2.html)])
    - Modular workflows with DSL2
+1. Tidy data and `dplyr` ([[material](07_dplyr_tidy_data)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/08_dplyr_tidy_data.html)])
   
 **More topics that will be covered in the following lectures**
 
 4. VScode remote development
 5. Jupyter notebooks and Rmarkdown
-7. advanced data handling in R: dplyr
 8. Fundamentals of data visualization
    - ggplot2
    - tidyHeatmap
