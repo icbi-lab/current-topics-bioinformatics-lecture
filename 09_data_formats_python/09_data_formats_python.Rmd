@@ -66,6 +66,7 @@ NumPy arrays are different from Pandas DataFrame:
   - NumPy stores data as one contiguous block
   - the whole NumPy array must have one data type
   - Pandas DataFrames store data as individual columns
+  - Pandas columns are actually numpy arrays
   - the DataFrame my have columns of different data types
 
 ![](images/NumPy_ndarrays_v2.png){width=500, align='left'}
@@ -126,8 +127,8 @@ Consider the following:
     - Best use cases: Sharing data. Small data. 
       Data that needs to be human-readable.
 
-CSV is the most popular file format, as it is human-readable and easy to share.
-
+CSV is the most popular file format, as it is human-readable and easy to share.\
+But, does not preserve data types. Not standardized.
 
 ## Data fromats: CSV/TSV
 
@@ -175,7 +176,7 @@ with open('dataset.csv', 'w', newline='') as csvfile:
     - Type: Text format
     - Packages needed: None (json-module is included with Python).
     - Space efficiency: Ok.
-    - Good for sharing/archival: No! See warning below.
+    - Good for sharing/archival: OK
     - Tidy data:
         - Speed: Ok
         - Ease of use: Ok
@@ -186,7 +187,8 @@ with open('dataset.csv', 'w', newline='') as csvfile:
 
 JSON is often used to represent hierarchical data with multiple layers or multiple connections.
 \
-However, when you’re working with big data, you rarely want to keep your data in this format.
+JSON is standardized (ISO standard) and preserves data types.
+However, when you’re working with big data, you rarely want to keep your data in this format.\
 
 
 ## Data fromats: Feather
@@ -206,7 +208,7 @@ However, when you’re working with big data, you rarely want to keep your data 
 Feather is a file format for storing data frames quickly. There are libraries for Python, R and Julia
 
 
-## Data fromats: Feather
+## Data fromats: Parquet
 
     - Type: Binary format
     - Packages needed: pandas, pyarrow
@@ -276,9 +278,11 @@ Pickle is Python’s own serialization library. It allows you to store Python ob
         - Speed: Bad
         - Ease of use: Ok
     - Best use cases: Sharing data in many fields. Quick data analysis.
+                      Manual data entry.
 
 
 Excel is very popular in social sciences and economics. However, it is **not** a good format for data science.
+<font size=4><https://www.kristianbrock.com/post/send-me-data/></font>
 
 ## Data formats: summary
 <div class="small2">
