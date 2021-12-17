@@ -89,7 +89,7 @@ Pandas an NumPy support and integrate many different file formats: e.g.
 <https://numpy.org/doc/stable/reference/routines.io.html>
 
 
-## Data fromats
+## Data formats
 
 What to look for in a file format?
 
@@ -100,7 +100,7 @@ Remember the following:
 
 ![](images/data_formats.jpeg){width=400, align='center'}
 
-## Data fromats
+## Data formats
 
 Consider the following:
 
@@ -111,7 +111,7 @@ Consider the following:
 
 
 
-## Data fromats: CSV/TSV
+## Data formats: CSV/TSV
 
     - Type: Text format
     - Packages needed: numpy, pandas, csv
@@ -130,7 +130,7 @@ Consider the following:
 CSV is the most popular file format, as it is human-readable and easy to share.\
 But, does not preserve data types. Not standardized.
 
-## Data fromats: CSV/TSV
+## Data formats: CSV/TSV
 
 Pandas
 
@@ -191,7 +191,7 @@ JSON is standardized (ISO standard) and preserves data types.
 However, when you’re working with big data, you rarely want to keep your data in this format.\
 
 
-## Data fromats: Feather
+## Data formats: Feather
 
     - Type: Binary format
     - Packages needed: pandas, pyarrow
@@ -208,7 +208,7 @@ However, when you’re working with big data, you rarely want to keep your data 
 Feather is a file format for storing data frames quickly. There are libraries for Python, R and Julia
 
 
-## Data fromats: Parquet
+## Data formats: Parquet
 
     - Type: Binary format
     - Packages needed: pandas, pyarrow
@@ -225,7 +225,7 @@ Feather is a file format for storing data frames quickly. There are libraries fo
 Parquet is a standardized open-source columnar storage format (C, Java, Python, MATLAB, Julia, etc.)
 
 
-## Data fromats: HDF5
+## Data formats: HDF5
 
     - Type: Binary format
     - Packages needed: pandas, PyTables, h5py
