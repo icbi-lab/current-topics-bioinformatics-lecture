@@ -44,16 +44,18 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 1. Nextflow - Part II ([[material](07_nextflow_dsl2)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/07_nextflow_dsl2.html)])
    - Modular workflows with DSL2
 1. Tidy data and `dplyr` ([[material](08_dplyr_tidy_data)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/08_dplyr_tidy_data.html)])
+1. Fundamentals of data visualization
+
+   The slides are not be available online due to copyright reasons. However, the book [Fundamentals of data visualization](https://clauswilke.com/dataviz/) is freely available online. 
+   
+1. virtual environments
+   - conda
+   - docker
+   - singularity
   
 **More topics that will be covered in the following lectures**
 
 4. VScode remote development
 5. Jupyter notebooks and Rmarkdown
-8. Fundamentals of data visualization
-   - ggplot2
-   - tidyHeatmap
-   - seaborn
-9. virtual environments
-   - singularity, podman
-   - conda
+
 
