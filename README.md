@@ -46,7 +46,7 @@ Attendees should have basic skills and knowledge in Linux and command line usage
 1. Tidy data and `dplyr` ([[material](08_dplyr_tidy_data)], [[slides](https://icbi-lab.github.io/current-topics-bioinformatics-lecture/08_dplyr_tidy_data.html)])
 1. Fundamentals of data visualization
 
-   The slides are not be available online due to copyright reasons. However, the book [Fundamentals of data visualization](https://clauswilke.com/dataviz/) is freely available online. 
+   The slides are not be available online for copyright reasons. However, the book [Fundamentals of data visualization](https://clauswilke.com/dataviz/) is freely available online. 
    
 1. virtual environments
    - conda
