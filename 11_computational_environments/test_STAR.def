@@ -1,0 +1,38 @@
+Bootstrap: library
+From: ubuntu:18.04
+Stage: build
+
+%environment
+    export LC_ALL=C
+
+%post
+    apt-get update -y && apt-get install -y \
+	build-essential \
+	zlib1g-dev \
+	unzip \
+	wget \
+	gcc \
+	g++ \
+	make \
+	git \
+	cmake \
+	autoconf \
+	coreutils \
+	locales
+
+    wget https://github.com/alexdobin/STAR/archive/2.7.10a.tar.gz && \
+    tar -xzf 2.7.10a.tar.gz && \
+    cd STAR-2.7.10a/source && \
+    make STAR && \
+	cp STAR /usr/local/bin && \
+	cd /usr/local/bin && \
+	rm -rf 2.7.10a.tar.gz
+
+    apt-get autoclean -y && apt-get clean -y
+
+%labels
+    Author georgios.fotakis@i-med.ac.at
+    Version v0.1
+
+%help
+    This is a demo container used to illustrate a def file.
